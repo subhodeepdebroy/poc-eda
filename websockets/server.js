@@ -18,9 +18,10 @@ io.on("connection", async (socket) => {
     console.log(`A user has connected with ID = ${socket.id}`)
 
     socket.on("getData", async () => {
-
+        console.time("server")
         await poll(socket)
         await produce.startProducer('MS-1', 'run')
+        console.timeEnd("server")
         // setInterval(async () => {
         //     await produce.startProducer('MS-1', 'run')
         // }, 10000);
